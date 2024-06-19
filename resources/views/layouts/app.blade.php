@@ -195,6 +195,8 @@
 
         function sendNotification(xx) {
             var no_sukon = $(xx).data('no_sukon');
+            var no_sep = $(xx).data('no_sep');
+            var no_rujukan = $(xx).data('no_rujukan');
             var no_ka = $(xx).data('no_ka');
             var fs_mr = $(xx).data('fs_mr');
             var nama = $(xx).data('nama');
@@ -215,6 +217,8 @@
                 type: "POST",
                 data: {
                     no_sukon: no_sukon,
+                    no_sep: no_sep,
+                    no_rujukan: no_rujukan,
                     no_ka: no_ka,
                     fs_mr: fs_mr,
                     nama: nama,
