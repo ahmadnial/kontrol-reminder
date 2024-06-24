@@ -15,8 +15,9 @@ class getDataController extends Controller
         $dateNowFull = Carbon::now();
         $maxDate = $dateNowFull->addDays(2)->format('Y-m-d');
         // dd($maxDate);
-        $listAll = DB::select(" SELECT a.noSuratKontrol,a.TglTrs,a.NoSep,a.NoKartu,a.norujukan,a.Nama,a.TglRencanaKontrol,a.NamaDokter, a.TglExpired, a.Faskes,b.fs_mr, b.fs_alm_pasien, b.fs_jns_kelamin, b.fs_tlp_pasien from VCLAIM_SKDP a 
+        $listAll = DB::select(" SELECT a.noSuratKontrol,a.TglTrs,a.NoSep,a.NoKartu,a.norujukan,a.Nama,a.TglRencanaKontrol,a.NamaDokter, a.TglExpired, a.Faskes,b.fs_mr, b.fs_alm_pasien, b.fs_jns_kelamin, b.fs_tlp_pasien, c.FS_NM_LAYANAN from VCLAIM_SKDP a 
                         left join tc_mr b on a.noMr = b.FS_MR
+                        left join TA_LAYANAN c on a.PoliKontrol = c.FS_KD_LAYANAN
                         where a.tglvoid = '3000-01-01' and a.NoSepKontrol='' and a.isspri = 0 and a.isskdphidok = 0 and a.tglRencanaKontrol > '$dateNow' and a.tglRencanaKontrol < '$maxDate' ");
         // return response()->json($listAll);
 
@@ -39,6 +40,7 @@ class getDataController extends Controller
                 data-tgl_expired="' . $row->TglExpired . '"
                 data-faskes="' . $row->Faskes . '"
                 data-jk="' . $row->fs_jns_kelamin . '"
+                data-layanan="' . $row->FS_NM_LAYANAN . '"
                 ><i class="fa fa-paper-plane">&nbsp;</i></button>
                 ';
 

@@ -23,6 +23,7 @@
                                     <th>No BPJS</th>
                                     <th class="">Tgl Kontrol</th>
                                     <th>Tujuan</th>
+                                    <th>Layanan</th>
                                     <th class="">Expired</th>
                                     <th>PPK</th>
                                     <th>Action</th>

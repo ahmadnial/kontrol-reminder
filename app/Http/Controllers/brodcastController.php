@@ -13,86 +13,110 @@ class brodcastController extends Controller
     public function postBrodcastMessage(Request $request)
     {
 
-        // foreach ($listAll as $itemX) {
-        //     $noSukon = $itemX->noSuratKontrol;
-        //     $noKa = $itemX->NoKartu;
-        //     $fs_mr = $itemX->fs_mr;
-        //     $nama = $itemX->Nama;
-        //     $alamat = $itemX->fs_alm_pasien;
-        //     $tglRencanaKontrol = $itemX->TglRencanaKontrol;
-        //     $namaDokter = $itemX->NamaDokter;
-        //     $fs_tlp_pasien = $itemX->fs_tlp_pasien;
-        //     $tglExpired = $itemX->TglExpired;
-        //     $Faskes = $itemX->Faskes;
-        //     $jk = $itemX->fs_jns_kelamin;
         if ($request->no_sep == $request->no_rujukan) {
-            $message = 'SURAT RENCANA KONTROL
-No. : ' . $request->no_sukon . '
-BPJS : ' . $request->no_ka . '
-Atas Nama : ' . $request->nama . '
-RM : ' . substr($request->fs_mr, 9) . '  JK : ' . $request->jk . '
+            $message = 'Selamat Pagi Sahabat Sehat RS Nur Rohmah!
+Mengingatkan Bapak/Ibu/Saudara/Saudari *' . $request->nama . '* 
 ' . $request->alamat . '
+untuk periksa sesuai Jadwal dengan Dokter *' . $request->nama_dokter . '* di *' . $request->layanan . '* pada tanggal ' . date("d-m-Y ", strtotime($request->tgl_rencana_kontrol)) . '
 
-Silakan untuk kontrol kembali ke dokter 
-' . $request->nama_dokter . '
-di RUMAH SAKIT NUR ROHMAH
-pada Tanggal ' . date("d-m-Y ", strtotime($request->tgl_rencana_kontrol)) . '
+-----------------------------------
 
-Terima kasih telah mempercayakan kesehatan anda pada kami, Semoga Lekas Sembuh :)
+Panel Informasi
+* Pendaftaran Online Via Mobile JKN melalui link berikut https://bit.ly/registrasionline-rsnurrohmah
+* Informasi jadwal praktek Dokter balas pesan ini dengan mengetikan "jadwal" (tanpa tanda kutip)
+* Informasi Farmasi http://wa.me/088902938721
+* Informasi Layanan Gawat Darurat (IGD) http://wa.me/6287733154169
 
-Panel Informasi ⬇️
+Terima kasih telah mempercayakan kesehatan anda pada kami, Semoga Lekas Sembuh ☺️';
 
-1. Informasi Jadwal Praktek Dokter balas pesan ini dengan mengetikan "jadwal" (tanpa tanda kutip)
 
-2. Konsultasi TELEPHONE RSNR (0274)394574
+            //             $message = 'SURAT RENCANA KONTROL
+            // No. : ' . $request->no_sukon . '
+            // BPJS : ' . $request->no_ka . '
+            // Atas Nama : ' . $request->nama . '
+            // RM : ' . substr($request->fs_mr, 9) . '  JK : ' . $request->jk . '
+            // ' . $request->alamat . '
 
-3. Emergency UGD ➡️ http://wa.me/6287733154169
+            // Silakan untuk kontrol kembali ke dokter 
+            // ' . $request->nama_dokter . '
+            // di RUMAH SAKIT NUR ROHMAH
+            // pada Tanggal ' . date("d-m-Y ", strtotime($request->tgl_rencana_kontrol)) . '
 
-4. KONSULTASI FARMASI ➡️ http://wa.me/088902938721
+            // Terima kasih telah mempercayakan kesehatan anda pada kami, Semoga Lekas Sembuh :)
 
-5.LAYANAN INFORMASI ➡️ http://wa.me/6283854014057
+            // Panel Informasi ⬇️
 
-6.PENDAFTARAN ONLINE BPJS MELALUI MOBILE JKN 
+            // 1. Informasi Jadwal Praktek Dokter balas pesan ini dengan mengetikan "jadwal" (tanpa tanda kutip)
 
-7.Pendaftaran pasien umum bisa mengirim foto KTP dan nomor telf
+            // 2. Konsultasi TELEPHONE RSNR (0274)394574
 
-Note : Mohon maaf kami tidak menerima Telepone seluler atau wa🙏🙏🙏
-';
+            // 3. Emergency UGD ➡️ http://wa.me/6287733154169
+
+            // 4. KONSULTASI FARMASI ➡️ http://wa.me/088902938721
+
+            // 5.LAYANAN INFORMASI ➡️ http://wa.me/6283854014057
+
+            // 6.PENDAFTARAN ONLINE BPJS MELALUI MOBILE JKN 
+
+            // 7.Pendaftaran pasien umum bisa mengirim foto KTP dan nomor telf
+
+            // Note : Mohon maaf kami tidak menerima Telepone seluler atau wa🙏🙏🙏
+            // ';
         } else {
-            $message = 'SURAT RENCANA KONTROL
-No. : ' . $request->no_sukon . '
-BPJS : ' . $request->no_ka . '
-Atas Nama : ' . $request->nama . '
-RM : ' . substr($request->fs_mr, 9) . '  JK : ' . $request->jk . '
+            $message = 'Selamat Pagi Sahabat Sehat RS Nur Rohmah!
+Mengingatkan Bapak/Ibu/Saudara/Saudari *' . $request->nama . '* 
 ' . $request->alamat . '
+untuk periksa sesuai Jadwal dengan Dokter *' . $request->nama_dokter . '* di *' . $request->layanan . '* pada tanggal ' . date("d-m-Y ", strtotime($request->tgl_rencana_kontrol)) . '
 
-Silakan untuk kontrol kembali ke dokter 
-' . $request->nama_dokter . '
-di RUMAH SAKIT NUR ROHMAH
-pada Tanggal ' . date("d-m-Y ", strtotime($request->tgl_rencana_kontrol)) . '
-Rujukan anda berakhir : ' . date("d-m-Y ", strtotime($request->tgl_expired)) . '
-Jika anda kontrol setelah tanggal ' . date("d-m-Y ", strtotime($request->tgl_expired)) . ', Silahkan untuk mencari Rujukan ulang di PPK ' . $request->faskes . '
+Rujukan anda berakhir pada ' . date("d-m-Y ", strtotime($request->tgl_expired)) . ' 
+Jika anda periksa setelah tanggal ' . date("d-m-Y ", strtotime($request->tgl_expired)) . '
+Silahkan untuk mencari Rujukan ulang di PPK *' . $request->faskes . '*
 
-Terima kasih telah mempercayakan kesehatan anda pada kami, Semoga Lekas Sembuh :)
+-----------------------------------
 
-Panel Informasi ⬇️
+Panel Informasi
+* Pendaftaran Online Via Mobile JKN melalui link berikut https://bit.ly/registrasionline-rsnurrohmah
+* Informasi jadwal praktek Dokter balas pesan ini dengan mengetikan "jadwal" (tanpa tanda kutip)
+* Informasi Farmasi http://wa.me/088902938721
+* Informasi Layanan Gawat Darurat (IGD) http://wa.me/6287733154169
 
-1. Informasi Jadwal Praktek Dokter balas pesan ini dengan mengetikan "jadwal" (tanpa tanda kutip)
+Terima kasih telah mempercayakan kesehatan anda pada kami, Semoga Lekas Sembuh ☺️';
 
-2. Konsultasi TELEPHONE RSNR (0274)394574
 
-3. Emergency UGD ➡️ http://wa.me/6287733154169
+            //             $message = 'SURAT RENCANA KONTROL
+            // No. : ' . $request->no_sukon . '
+            // BPJS : ' . $request->no_ka . '
+            // Atas Nama : ' . $request->nama . '
+            // RM : ' . substr($request->fs_mr, 9) . '  JK : ' . $request->jk . '
+            // ' . $request->alamat . '
 
-4. KONSULTASI FARMASI ➡️ http://wa.me/088902938721
+            // Silakan untuk kontrol kembali ke dokter 
+            // ' . $request->nama_dokter . '
+            // di RUMAH SAKIT NUR ROHMAH
+            // pada Tanggal ' . date("d-m-Y ", strtotime($request->tgl_rencana_kontrol)) . '
+            // Rujukan anda berakhir : ' . date("d-m-Y ", strtotime($request->tgl_expired)) . '
+            // Jika anda kontrol setelah tanggal ' . date("d-m-Y ", strtotime($request->tgl_expired)) . ', Silahkan untuk mencari Rujukan ulang di PPK ' . $request->faskes . '
 
-5.LAYANAN INFORMASI ➡️ http://wa.me/6283854014057
+            // Terima kasih telah mempercayakan kesehatan anda pada kami, Semoga Lekas Sembuh :)
 
-6.PENDAFTARAN ONLINE BPJS MELALUI MOBILE JKN 
+            // Panel Informasi ⬇️
 
-7.Pendaftaran pasien umum bisa mengirim foto KTP dan nomor telf
+            // 1. Informasi Jadwal Praktek Dokter balas pesan ini dengan mengetikan "jadwal" (tanpa tanda kutip)
 
-Note : Mohon maaf kami tidak menerima Telepone seluler atau wa🙏🙏🙏
-';
+            // 2. Konsultasi TELEPHONE RSNR (0274)394574
+
+            // 3. Emergency UGD ➡️ http://wa.me/6287733154169
+
+            // 4. KONSULTASI FARMASI ➡️ http://wa.me/088902938721
+
+            // 5.LAYANAN INFORMASI ➡️ http://wa.me/6283854014057
+
+            // 6.PENDAFTARAN ONLINE BPJS MELALUI MOBILE JKN 
+
+            // 7.Pendaftaran pasien umum bisa mengirim foto KTP dan nomor telf
+
+            // Note : Mohon maaf kami tidak menerima Telepone seluler atau wa🙏🙏🙏
+            // ';
         }
         $curl = curl_init();
         $token = '-iwXrDQw9Yt9NZtZXX1d';

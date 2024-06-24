@@ -172,6 +172,10 @@
                                 name: 'NamaDokter'
                             },
                             {
+                                data: 'FS_NM_LAYANAN',
+                                name: 'FS_NM_LAYANAN'
+                            },
+                            {
                                 data: 'TglExpired',
                                 name: 'TglExpired',
                                 render: function(data, type, row) {
@@ -203,6 +207,7 @@
             var alamat = $(xx).data('alamat');
             var tgl_rencana_kontrol = $(xx).data('tgl_rencana_kontrol');
             var nama_dokter = $(xx).data('nama_dokter');
+            var layanan = $(xx).data('layanan');
             var fs_tlp_pasien = $(xx).data('fs_tlp_pasien');
             var tgl_expired = $(xx).data('tgl_expired');
             var faskes = $(xx).data('faskes');
@@ -225,6 +230,7 @@
                     alamat: alamat,
                     tgl_rencana_kontrol: tgl_rencana_kontrol,
                     nama_dokter: nama_dokter,
+                    layanan: layanan,
                     fs_tlp_pasien: fs_tlp_pasien,
                     tgl_expired: tgl_expired,
                     faskes: faskes,
