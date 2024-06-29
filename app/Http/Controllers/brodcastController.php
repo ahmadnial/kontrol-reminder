@@ -133,7 +133,7 @@ Terima kasih telah mempercayakan kesehatan anda pada kami, Semoga Lekas Sembuh â
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => array(
-                'target' => $request->fs_tlp_pasien,
+                'target' => '085974077234',
                 'message' => $message,
                 // 'buttonJSON' => '{"buttons":[{"id":"mybutton1","message":"hello fonnte"},{"id":"mybutton2","message":"fonnte pricing"},{"id":"mybutton3","message":"tutorial fonnte"}]}',
                 'delay' => '10',

@@ -15,6 +15,7 @@
                         @endif
 
                         <table id="example1" class="table table-hover" style="width: 100%; font-size: 13px;">
+
                             <thead style="background-color: rgb(236, 174, 97)">
                                 <tr>
                                     <th>Nama</th>
@@ -33,6 +34,11 @@
 
                             </tbody>
                         </table>
+                        <div class="float-right">
+                            <button type="button" class="btn btn-sm btn-primary" onclick="sendAllOurLove()"><i
+                                    class="fa fa-plane"></i>&nbsp;&nbsp;Send
+                                Love to All Awsem Vibes</button>
+                        </div>
                     </div>
                 </div>
             </div>

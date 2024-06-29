@@ -107,16 +107,15 @@
     <script src="https://cdn.datatables.net/plug-ins/1.10.21/dataRender/datetime.js"></script>
     <script>
         window.onload = function() {
-            // $('.Sendmessage').click();
-            // var bt = $(".sendmessage");
-            // for (var i = 0; i < bt.length; i++) {
-            //     bt[i].onclick();
-            // }
-            // var button = document.getElementsByClassName('Sendmessage');
-            // setTimeout(() => {
-            //     $('.sendmessage').click();
-            // }, 1000);
+
         };
+
+        function sendAllOurLove() {
+            var button = document.getElementsByClassName('Sendmessage');
+            setTimeout(() => {
+                $('.sendmessage').click();
+            }, 1000);
+        }
 
         getMonthSale()
 
