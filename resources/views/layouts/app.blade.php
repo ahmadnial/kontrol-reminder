@@ -49,7 +49,6 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -93,6 +92,10 @@
         </nav>
 
         <main class="py-4">
+             <div class="container-fluid mb-2">
+                <a class="btn btn-sm btn-warning" href="{{ url('home') }}">JKN</a>
+                <a class="btn btn-sm btn-warning" href="{{ url('non-jkn') }}">Non-JKN</a>
+            </div>
             @yield('content')
         </main>
     </div>
@@ -241,6 +244,7 @@
             });
         }
     </script>
+    @stack('javscript')
 </body>
 
 </html>

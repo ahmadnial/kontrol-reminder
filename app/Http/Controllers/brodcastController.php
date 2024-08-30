@@ -134,6 +134,63 @@ Terima kasih telah mempercayakan kesehatan anda pada kami, Semoga Lekas Sembuh �
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => array(
                 'target' => $request->fs_tlp_pasien,
+                // 'target' => '085974077234',
+                'message' => $message,
+                // 'buttonJSON' => '{"buttons":[{"id":"mybutton1","message":"hello fonnte"},{"id":"mybutton2","message":"fonnte pricing"},{"id":"mybutton3","message":"tutorial fonnte"}]}',
+                'delay' => '10',
+                // 'schedule' => '1718003104',
+                'countryCode' => '62', //optional
+            ),
+            CURLOPT_HTTPHEADER => array(
+                'Authorization: -iwXrDQw9Yt9NZtZXX1d'
+            ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+        // echo $response;
+
+        // return back();
+        if ($response) {
+            return response()->json($response);
+        }
+    }
+
+     public function BrodcastMessageNonJkn(Request $request)
+    {
+            $message = 'Selamat Pagi Sahabat Sehat RS Nur Rohmah!
+Mengingatkan Bapak/Ibu/Saudara/Saudari *' . $request->fs_nm_pasien . '* 
+' . $request->fs_alm_pasien . '
+untuk periksa sesuai Jadwal dengan Dokter *' . $request->fs_nm_dpjp . '* di *' . $request->fs_nm_layanan . '* pada tanggal ' . date("d-m-Y ", strtotime($request->fd_tgl_kontrol)) . '
+
+-----------------------------------
+
+Panel Informasi
+* Pendaftaran Online Via Mobile JKN melalui link berikut https://bit.ly/registrasionline-rsnurrohmah
+* Informasi jadwal praktek Dokter balas pesan ini dengan mengetikan "jadwal" (tanpa tanda kutip)
+* Informasi Farmasi http://wa.me/088902938721
+* Informasi Layanan Gawat Darurat (IGD) http://wa.me/6287733154169
+
+Terima kasih telah mempercayakan kesehatan anda pada kami, Semoga Lekas Sembuh ☺️';
+        
+        $curl = curl_init();
+        $token = '-iwXrDQw9Yt9NZtZXX1d';
+
+        // }
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://api.fonnte.com/send',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => array(
+                // 'target' => $request->fs_tlp_pasien,
+                'target' => '085974077234',
                 'message' => $message,
                 // 'buttonJSON' => '{"buttons":[{"id":"mybutton1","message":"hello fonnte"},{"id":"mybutton2","message":"fonnte pricing"},{"id":"mybutton3","message":"tutorial fonnte"}]}',
                 'delay' => '10',
