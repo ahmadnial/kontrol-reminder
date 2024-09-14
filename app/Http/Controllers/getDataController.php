@@ -13,7 +13,7 @@ class getDataController extends Controller
     {
         $dateNow = Carbon::now()->format('Y-m-d');
         $dateNowFull = Carbon::now();
-        $maxDate = $dateNowFull->addDays(3)->format('Y-m-d');
+        $maxDate = $dateNowFull->addDays(2)->format('Y-m-d');
         // dd($maxDate);
         $listAll = DB::select(" SELECT a.noSuratKontrol,a.TglTrs,a.NoSep,a.NoKartu,a.norujukan,a.Nama,a.TglRencanaKontrol,a.NamaDokter, a.TglExpired, a.Faskes,b.fs_mr, b.fs_alm_pasien, b.fs_jns_kelamin, b.fs_tlp_pasien, c.FS_NM_LAYANAN from VCLAIM_SKDP a 
                         left join tc_mr b on a.noMr = b.FS_MR
@@ -54,7 +54,7 @@ class getDataController extends Controller
     {
         $dateNow = Carbon::now()->format('Y-m-d');
         $dateNowFull = Carbon::now();
-        $maxDate = $dateNowFull->addDays(3)->format('Y-m-d');
+        $maxDate = $dateNowFull->addDays(2)->format('Y-m-d');
         // dd($maxDate);
         $listAll = DB::select(" SELECT b.fs_nm_pasien, b.fs_alm_pasien, e.fs_nm_tipe_jaminan, a.fs_mr , a.fs_kd_reg, a.fs_no_skdp, c.fs_nm_layanan, a.fd_tgl_kontrol, a.fs_nm_dpjp, b.fs_tlp_pasien
                                 from tz_skdp_histori a
