@@ -148,20 +148,26 @@ Terima kasih telah mempercayakan kesehatan anda pada kami, Semoga Lekas Sembuh �
 
         $response = curl_exec($curl);
 
-        curl_close($curl);
-        // echo $response;
+        if (curl_errno($curl)) {
+            $error_msg = curl_error($curl); // Capture cURL errors
+            curl_close($curl);
+            return response()->json(['error' => $error_msg], 500); // Return error message
+        }
 
-        // return back();
+        curl_close($curl);
+
         if ($response) {
-            return response()->json($response);
+            return response()->json($response); // Return the API response
+        } else {
+            return response()->json(['error' => 'No response from API'], 500); // Handle empty response
         }
     }
 
     // --------------------------------NON JKN------------------------------------
 
-     public function BrodcastMessageNonJkn(Request $request)
+    public function BrodcastMessageNonJkn(Request $request)
     {
-        if($request->fs_nm_layanan == 'POLI UMUM'){
+        if ($request->fs_nm_layanan == 'POLI UMUM') {
             $message = 'Selamat Pagi Sahabat Sehat RS Nur Rohmah!
 Mengingatkan Bapak/Ibu/Saudara/Saudari *' . $request->fs_nm_pasien . '* 
 ' . $request->fs_alm_pasien . '
@@ -176,8 +182,7 @@ Panel Informasi
 * Informasi Layanan Gawat Darurat (IGD) http://wa.me/6287733154169
 
 Terima kasih telah mempercayakan kesehatan anda pada kami, Semoga Lekas Sembuh ☺️';
-
-        }else{
+        } else {
 
             $message = 'Selamat Pagi Sahabat Sehat RS Nur Rohmah!
 Mengingatkan Bapak/Ibu/Saudara/Saudari *' . $request->fs_nm_pasien . '* 
@@ -193,8 +198,8 @@ Panel Informasi
 * Informasi Layanan Gawat Darurat (IGD) http://wa.me/6287733154169
 
 Terima kasih telah mempercayakan kesehatan anda pada kami, Semoga Lekas Sembuh ☺️';
-        }  
-            
+        }
+
         $curl = curl_init();
         $token = '-iwXrDQw9Yt9NZtZXX1d';
 
@@ -225,12 +230,28 @@ Terima kasih telah mempercayakan kesehatan anda pada kami, Semoga Lekas Sembuh �
 
         $response = curl_exec($curl);
 
-        curl_close($curl);
-        // echo $response;
-
-        // return back();
-        if ($response) {
-            return response()->json($response);
+        if (curl_errno($curl)) {
+            $error_msg = curl_error($curl); // Capture cURL errors
+            curl_close($curl);
+            return response()->json(['error' => $error_msg], 500); // Return error message
         }
+
+        curl_close($curl);
+
+        if ($response) {
+            return response()->json($response); // Return the API response
+        } else {
+            return response()->json(['error' => 'No response from API'], 500); // Handle empty response
+        }
+
+        // $response = curl_exec($curl);
+
+        // curl_close($curl);
+        // // echo $response;
+
+        // // return back();
+        // if ($response) {
+        //     return response()->json($response);
+        // }
     }
 }
