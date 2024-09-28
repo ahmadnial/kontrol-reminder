@@ -13,9 +13,6 @@
     <!-- Fonts -->
     {{-- <link rel="dns-prefetch" href="//fonts.bunny.net"> --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.css"
-        integrity="sha512-6S2HWzVFxruDlZxI3sXOZZ4/eJ8AcxkQH1+JjSe/ONCEqR9L4Ysq5JdT5ipqtzU7WHalNwzwBv+iE51gNHJNqQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
@@ -107,9 +104,7 @@
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> --}}
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.js"
-        integrity="sha512-lbwH47l/tPXJYG9AcFNoJaTMhGvYWhVM9YI43CT+uteTRRaiLCui8snIgyAN8XWgNjNhCqlAUdzZptso6OCoFQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     {{-- <script src="https://cdn.datatables.net/plug-ins/2.0.8/dataRender/datetime.js"></script> --}}
     <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
@@ -134,9 +129,9 @@
 
             function clickNextButton() {
                 if (index < buttons.length) {
-                    buttons[index].click(); 
-                    index++; 
-                    setTimeout(clickNextButton, 9000); 
+                    buttons[index].click();
+                    index++;
+                    setTimeout(clickNextButton, 9000);
                 }
             }
 
@@ -265,31 +260,21 @@
                     console.log(response);
                     if (response) {
                         toastr.options = {
-                            preventDuplicates: true,
-                            timeOut: 4000,
-                            progressBar: true,
-                            positionClass: "toast-top-right"
+                            "closeButton": true,
+                            "progressBar": false,
+                            "positionClass": "toast-top-right",
+                            "showDuration": "300",
+                            "hideDuration": "1000",
+                            "timeOut": "5000",
+                            "extendedTimeOut": "1000",
+                            "showEasing": "swing",
+                            "hideEasing": "linear",
+                            "showMethod": "fadeIn",
+                            "hideMethod": "fadeOut",
+                            "toastClass": 'toast-custom' // Custom class for additional styles
                         }
 
-                        toastr.warning('WA Sent!', 'Success');
-                        // toastr.options = {
-                        //     "closeButton": true,
-                        //     "debug": true,
-                        //     "newestOnTop": true,
-                        //     "progressBar": false,
-                        //     "positionClass": "toast-top-right",
-                        //     "preventDuplicates": false,
-                        //     "onclick": null,
-                        //     "showDuration": "300",
-                        //     "hideDuration": "1000",
-                        //     "timeOut": "5000",
-                        //     "extendedTimeOut": "1000",
-                        //     "showEasing": "swing",
-                        //     "hideEasing": "linear",
-                        //     "showMethod": "fadeIn",
-                        //     "hideMethod": "fadeOut"
-                        // }
-                        // toastr.success("Have fun storming the castle!")
+                        toastr.success('Cool, WhatsApp notification sent!');
                     }
                 }
             });
