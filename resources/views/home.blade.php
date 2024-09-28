@@ -14,7 +14,7 @@
                             </div>
                         @endif
 
-                        <table id="example1" class="table table-hover" style="width: 100%; font-size: 13px;">
+                        <table id="example1" class="table table-hover table-striped table-responsive" style="width: 100%; font-size: 13px;">
 
                             <thead style="background-color: rgb(236, 174, 97)">
                                 <tr>
