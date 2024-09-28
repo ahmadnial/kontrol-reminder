@@ -121,11 +121,26 @@
 
         };
 
+        // function sendAllOurLove() {
+        //     var button = document.getElementsByClassName('Sendmessage');
+        //     setTimeout(() => {
+        //         $('.sendmessage').click();
+        //     }, 1000);
+        // }
+
         function sendAllOurLove() {
-            var button = document.getElementsByClassName('Sendmessage');
-            setTimeout(() => {
-                $('.sendmessage').click();
-            }, 1000);
+            var buttons = document.getElementsByClassName('sendmessage');
+            let index = 0;
+
+            function clickNextButton() {
+                if (index < buttons.length) {
+                    buttons[index].click(); 
+                    index++; 
+                    setTimeout(clickNextButton, 9000); 
+                }
+            }
+
+            clickNextButton();
         }
 
         getMonthSale()
