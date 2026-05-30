@@ -10,12 +10,12 @@ use Illuminate\Support\Facades\Log;
 class SendReminderKontrol extends Command
 {
     protected $signature = 'wa:reminder-kontrol';
-    protected $description = 'Kirim otomatis WA Reminder Kontrol H-3 ke Pasien dan Laporan ke Admin';
+    protected $description = 'Kirim otomatis WA Reminder Kontrol H-2 ke Pasien dan Laporan ke Admin';
 
     public function handle()
     {
         $dateNowFull = Carbon::now();
-        $maxDate = $dateNowFull->addDays(3)->format('Y-m-d');
+        $maxDate = $dateNowFull->addDays(2)->format('Y-m-d');
         
         $this->info("Memulai proses tarik data untuk tanggal kontrol: " . $maxDate);
 
@@ -48,8 +48,8 @@ class SendReminderKontrol extends Command
             }
 
             // Eksekusi cURL ke Pasien
-            $this->kirimPesanFonnte('6285974077234', $message, $token);
-            // $this->kirimPesanFonnte($row->fs_tlp_pasien, $message, $token);
+            // $this->kirimPesanFonnte('6285974077234', $message, $token);
+            $this->kirimPesanFonnte($row->fs_tlp_pasien, $message, $token);
             $sukses++; // Asumsi sukses (bisa ditambahkan validasi respons JSON jika perlu)
             
             // Jeda agar tidak dianggap SPAM oleh WA
@@ -58,7 +58,7 @@ class SendReminderKontrol extends Command
 
         // 3. KUMPULKAN REKAP & KIRIM KE ADMIN
         $tanggalSekarang = Carbon::now()->format('d M Y H:i');
-        $laporanAdmin = "🤖 *LAPORAN CRONJOB RSNR*\n_Reminder Kontrol H-3_\n\n🗓 Tanggal Run: $tanggalSekarang\n🎯 Tanggal Kontrol: " . date("d-m-Y", strtotime($maxDate)) . "\n\n📊 *REKAPITULASI:*\n- Total Target: *$totalTarget Pasien*\n- ✅ Berhasil Dikirim: *$sukses*\n- ❌ Gagal/No Kosong: *$gagal*\n\n_System generated message_";
+        $laporanAdmin = "🤖 *Laporrr Mas Ahmad, dari Jarvis Cronjob RSNR*\n_Reminder Kontrol H-2_\n\n🗓 Tanggal Run: $tanggalSekarang\n🎯 Tanggal Kontrol: " . date("d-m-Y", strtotime($maxDate)) . "\n\n📊 *REKAPITULASI:*\n- Total Target: *$totalTarget Pasien*\n- ✅ Berhasil Dikirim: *$sukses*\n- ❌ Gagal/No Kosong: *$gagal*\n\n_System generated message_";
 
         // Kirim Laporan ke Admin
         $this->kirimPesanFonnte($no_wa_admin, $laporanAdmin, $token);
