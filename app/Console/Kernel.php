@@ -13,8 +13,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         // Eksekusi Command WA otomatis setiap jam 08:00 pagi
-        // $schedule->command('wa:reminder-kontrol')->dailyAt('08:00');
-        $schedule->command('wa:reminder-kontrol')->everyFiveMinutes(); // Untuk testing, jalankan setiap 5 menit
+        $schedule->command('wa:reminder-kontrol')->dailyAt('08:00');
+        // $schedule->command('wa:reminder-kontrol')->everyFiveMinutes(); // Untuk testing, jalankan setiap 5 menit
     }
 
     /**
