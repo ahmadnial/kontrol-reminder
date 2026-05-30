@@ -58,7 +58,7 @@ class SendReminderKontrol extends Command
 
         // 3. KUMPULKAN REKAP & KIRIM KE ADMIN
         $tanggalSekarang = Carbon::now()->format('d M Y H:i');
-        $laporanAdmin = "🤖 *Laporrr Mas Ahmad, dari Jarvis Cronjob RSNR*\n_Reminder Kontrol H-2_\n\n🗓 Tanggal Run: $tanggalSekarang\n🎯 Tanggal Kontrol: " . date("d-m-Y", strtotime($maxDate)) . "\n\n📊 *REKAPITULASI:*\n- Total Target: *$totalTarget Pasien*\n- ✅ Berhasil Dikirim: *$sukses*\n- ❌ Gagal/No Kosong: *$gagal*\n\n_System generated message_";
+        $laporanAdmin = "🤖 *Laporrr Mas Ahmad, dari Jarvis Cronjob RSNR*\n_Reminder Kontrol H-2_\n\n🗓 Tanggal Run: $tanggalSekarang\n🎯 Tanggal Kontrol: " . date("d-m-Y", strtotime($maxDate)) . "\n\n📊 *REKAPITULASI:*\n- Total Target: *$totalTarget Pasien*\n- ✅ Berhasil Dikirim: *$sukses*\n- ❌ Gagal/No Kosong: *$gagal*\n\n_Laporan Selesai Mas Ahmad,Terimakasih_";
 
         // Kirim Laporan ke Admin
         $this->kirimPesanFonnte($no_wa_admin, $laporanAdmin, $token);
