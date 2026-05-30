@@ -12,10 +12,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        // $schedule->command('inspire')->hourly();
-        // $schedule->command('broadcast:kontrol')->dailyAt('08:00');
-        $schedule->command('broadcast:kontrol')->everyTwoMinutes();
-
+        // Eksekusi Command WA otomatis setiap jam 08:00 pagi
+        $schedule->command('wa:reminder-kontrol')->dailyAt('08:00');
     }
 
     /**
