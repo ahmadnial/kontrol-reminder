@@ -48,7 +48,8 @@ class SendReminderKontrol extends Command
             }
 
             // Eksekusi cURL ke Pasien
-            $this->kirimPesanFonnte($row->fs_tlp_pasien, $message, $token);
+            $this->kirimPesanFonnte('6285974077234', $message, $token);
+            // $this->kirimPesanFonnte($row->fs_tlp_pasien, $message, $token);
             $sukses++; // Asumsi sukses (bisa ditambahkan validasi respons JSON jika perlu)
             
             // Jeda agar tidak dianggap SPAM oleh WA
