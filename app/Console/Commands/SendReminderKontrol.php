@@ -18,7 +18,7 @@ class SendReminderKontrol extends Command
         set_time_limit(0);
 
         $dateNowFull = Carbon::now();
-        $maxDate = $dateNowFull->addDays(2)->format('Y-m-d');
+        $maxDate = $dateNowFull->addDays(1)->format('Y-m-d');
         
         $this->info("Memulai proses tarik data untuk tanggal kontrol: " . $maxDate);
 
@@ -58,8 +58,8 @@ class SendReminderKontrol extends Command
             
             // --- ALGORITMA ANTI-SPAM (HUMANIZER) DIMULAI DI SINI ---
 
-            // A. Jeda Acak (Random Sleep) antar 5 sampai 12 detik
-            $waktu_jeda = rand(5, 12); 
+            // A. Jeda Acak (Random Sleep) antar 7 sampai 12 detik
+            $waktu_jeda = rand(7, 12); 
             $this->info("Pesan terkirim ke {$row->fs_tlp_pasien}. Jeda acak: {$waktu_jeda} detik...");
             sleep($waktu_jeda);
 
@@ -73,7 +73,7 @@ class SendReminderKontrol extends Command
 
         // 3. KUMPULKAN REKAP & KIRIM KE ADMIN
         $tanggalSekarang = Carbon::now()->format('d M Y H:i');
-        $laporanAdmin = "🤖 *Laporrr Mas Ahmad, dari Jarvis Cronjob RSNR*\n_Reminder Kontrol H-2_\n\n🗓 Tanggal Run: $tanggalSekarang\n🎯 Tanggal Kontrol: " . date("d-m-Y", strtotime($maxDate)) . "\n\n📊 *REKAPITULASI:*\n- Total Target: *$totalTarget Pasien*\n- ✅ Berhasil Dikirim: *$sukses*\n- ❌ Gagal/No Kosong: *$gagal*\n\n_Laporan Selesai Mas Ahmad,Terimakasih_";
+        $laporanAdmin = "🤖 *Laporrr Mas Ahmad, dari Jarvis Cronjob RSNR*\n_Reminder Kontrol H-1_\n\n🗓 Tanggal Run: $tanggalSekarang\n🎯 Tanggal Kontrol: " . date("d-m-Y", strtotime($maxDate)) . "\n\n📊 *REKAPITULASI:*\n- Total Target: *$totalTarget Pasien*\n- ✅ Berhasil Dikirim: *$sukses*\n- ❌ Gagal/No Kosong: *$gagal*\n\n_Laporan Selesai Mas Ahmad,Terimakasih_";
 
         // Kirim Laporan ke Admin
         $this->kirimPesanFonnte($no_wa_admin, $laporanAdmin, $token);
